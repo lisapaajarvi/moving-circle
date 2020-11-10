@@ -1,44 +1,48 @@
-document.addEventListener('load', main);
+window.addEventListener('load', main);
 
-const circle = document.getElementById("moving-circle");
-let topPosition = 50;
-let leftPosition = 50;
+let circle;
+let position = {
+    top: 45,
+    left: 45
+}
+
 
 function main() {
     addEventListeners();
+    fetchDomElements();
 }
 
 function addEventListeners() {
-    document.addEventListener('keydown', function() {checkArrowKey(e);});
+    document.addEventListener('keydown', moveCircle);
 }
 
-function checkArrowKey(e) {
-    if(e.keyCode == '38') {
-        moveCircleUp();
-    }
-    else if(e.keyCode == '40') {
-        moveCircleDown();
-    }
-    else if(e.keyCode == '39') {
-        moveCircleRight();
-    }
-    else if(e.keyCode == '37') {
-        moveCircleLeft();
-    }
+function fetchDomElements() {
+    circle = document.getElementById("moving-circle");
+}
+function moveCircle(event) {
+    console.log(event);
+    
+    switch(event.key) {
+        case 'ArrowUp':
+            position.top -= 1;
+            break;
+        case 'ArrowDown':
+            position.top += 1;
+            break;
+        case 'ArrowRight':
+            position.left += 1;
+            break;
+        case 'ArrowLeft':
+            position.left -= 1;
+            break;
+        default:
+            alert("Använd piltangenterna!")
+    }   
+
+        updateCirclePosition();
 }
 
-function moveCircleUp() {
-    circle.style.top = topPosition-- + "%"; 
-}
-
-function moveCircleDown() {
-    circle.style.top = topPosition++ + "%";
-}
-
-function moveCircleRight() {
-    circle.style.left = leftPosition-- + "%";
-}
-
-function moveCircleLeft() {
-    circle.style.left = leftPosition++ + "%";
+function updateCirclePosition() {
+    circle.style.left = position.left + '%';
+    circle.style.top = position.top + '%';
 }
