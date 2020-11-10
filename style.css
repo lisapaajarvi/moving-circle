@@ -1,3 +1,9 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: turquoise;
+}
+
 #moving-circle {
     width: 5rem;
     height: 5rem;

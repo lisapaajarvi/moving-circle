@@ -36,7 +36,7 @@ function moveCircle(event) {
             position.left -= 1;
             break;
         default:
-            alert("Använd piltangenterna!")
+            alert("Använd piltangenterna för att flytta cirkeln")
     }   
 
         updateCirclePosition();
